@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>internal.build.parent-poms</groupId>
+        <artifactId>mal</artifactId>
+        <version>1.21.1</version>
+    </parent>
+
+    <name>Maven Sample Project</name>
+    <groupId>internal.sample</groupId>
+    <artifactId>maven-sample</artifactId>
+    <version>1.${revision}</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>core</module>
+        <module>site</module>
+    </modules>
+
+    <scm>
+        <url>ssh://git@github.com:florin1288/maven-sample.git</url>
+        <connection>scm:git:ssh://git@github.com:florin1288/maven-sample.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:florin1288/maven-sample.git</developerConnection>
+        <tag>master</tag>
+    </scm>
+
+    <properties>
+        <conf.version>2.3.2</conf.version>
+        <revision>0-SNAPSHOT</revision>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>internal.build</groupId>
+                <artifactId>conf</artifactId>
+                <version>${conf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+
